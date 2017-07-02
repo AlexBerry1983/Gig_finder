@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var path = require('path');
-
+var Query = require('../db/db_query.js');
 
 router.get('/api/listings', function (req, res) {
   MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
@@ -18,11 +18,13 @@ router.get('/', function (req, res) {
 });
 
 router.get('/api/listings/:id', function(req, res) {
-  res.json("mike will write the db side")
+  res.json("Mike is gonna boss this shiiiiiiit");
 })
 
 router.delete('/api/listings/:id', function (req, res) {
-  res.json("a thing has been deleted - mike will write the db side")
+  var deleteQuery = new Query().delete(function(data) {
+  res.json(data);
+  });
 })
 
 module.exports = router;
