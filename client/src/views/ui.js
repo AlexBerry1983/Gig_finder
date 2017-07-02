@@ -15,7 +15,9 @@ UI.prototype ={
   makeSearchInput: function() {
     var searchInput = new Input();
     searchInput.create();
-  }
+  },
+
+
 
 
 }
