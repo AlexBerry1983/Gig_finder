@@ -17,4 +17,12 @@ router.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/build/index.html'));
 });
 
+router.get('/api/listings/:id', function(req, res) {
+  res.json("mike will write the db side")
+})
+
+router.delete('/api/listings/:id', function (req, res) {
+  res.json("a thing has been deleted - mike will write the db side")
+})
+
 module.exports = router;
