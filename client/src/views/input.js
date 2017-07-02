@@ -8,7 +8,7 @@ Input.prototype = {
     var search = document.createElement('input');
     body.appendChild(search);
 
-    search.addEventListener('change', function() {
+    search.addEventListener('input', function() {
       console.log("woot console logging all day bro")
     })
   },
