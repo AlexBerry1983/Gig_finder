@@ -27,11 +27,19 @@ List.prototype = {
     gigListLi.addEventListener('click', function(event){
       var displayInfo = new DisplayInfo();
       displayInfo.makeMapInfo(event);
-    })
+      var button = this.createDeleteButton();
+      gigListLi.appendChild(button);
+      console.log(this.createDeleteButton());
+    }.bind(this));
+
     this.ul.appendChild(gigListLi);
-   }
-  //
-  // createDeleteButton:
+
+  },
+
+  createDeleteButton: function() {
+    var deleteButton = new Button();
+    return deleteButton.create('DELETE', '/api/listings/:id');
+  }
 
 
 
