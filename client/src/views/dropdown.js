@@ -2,12 +2,14 @@ var Dropdown = function (inputHook) {
   this.ul = document.createElement('ul');
   this.inputHook = inputHook;
   this.inputHook.insertAdjacentElement("afterend", this.ul);
+  this.previousData = {};
 
   this.setupEventListeners();
 }
 
 Dropdown.prototype = {
   render: function (objs) {
+    this.previousData = objs;
     this.ul.id = 'dropdown';
     this.clear();
 
@@ -31,7 +33,8 @@ Dropdown.prototype = {
   setupEventListeners: function () {
     this.inputHook.addEventListener('focus', function () {
       console.log('FOCUSED');
-    });
+      this.render(this.previousData);
+    }.bind(this));
     this.inputHook.addEventListener('focusout', function (event) {
       console.log(document.querySelectorAll('.dropdownItem:hover'));
       if (document.querySelectorAll('.dropdownItem:hover').length === 0){
