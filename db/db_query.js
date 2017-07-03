@@ -20,11 +20,11 @@ Query.prototype = {
     });
   },
 
-  update: function (id, onDataLoad) {
+  update: function (updateObject, id, onDataLoad) {
     MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
       if (err) return;
       // update item from database by id
-      db.collection('listings').update({"_id": ObjectId(id)}, {$set:{'name':'another name'}});
+      db.collection('listings').update({"_id": ObjectId(id)}, {$set:updateObject});
       // now return list with item updated
       db.collection('listings').find().toArray(function(err, docs){
         onDataLoad(docs);

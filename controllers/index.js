@@ -27,7 +27,8 @@ router.delete('/api/listings/:id', function (req, res) {
 
 router.put('/api/listings/:id', function (req, res) {
   var id = req.params.id;
-  var updateQuery = new Query().update(id, function(data) {
+  var updateObject = req.body;
+  var updateQuery = new Query().update(updateObject, id, function(data) {
     res.json(data);
   });
 });
