@@ -5,9 +5,7 @@ var app = function(){
   var ui = new UI();
   ui.makeListItem();
   ui.makeSearchInput();
-  ui.makeMap();
 
 
 }
-
-app()
+window.addEventListener('load', app);

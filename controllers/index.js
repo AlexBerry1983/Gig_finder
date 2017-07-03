@@ -5,12 +5,9 @@ var path = require('path');
 var Query = require('../db/db_query.js');
 
 router.get('/api/listings', function (req, res) {
-  MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
-    if (err) return;
-    db.collection('listings').find().toArray(function(err, docs){
-      res.json(docs);
-    })
-  })
+  var getAllQuery = new Query().all(function(data) {
+  res.json(data);
+  });
 });
 
 router.get('/', function (req, res) {
@@ -22,13 +19,17 @@ router.get('/api/listings/:id', function(req, res) {
 });
 
 router.delete('/api/listings/:id', function (req, res) {
-  var deleteQuery = new Query().delete(function(data) {
-  res.json(data);
+  var id = req.params.id;
+  var deleteQuery = new Query().delete(id, function(data) {
+    res.json(data);
   });
 });
 
-router.put('/api/listings/:id', function(req, res) {
-  res.json("the thing has been updated - db side comes later")
+router.put('/api/listings/:id', function (req, res) {
+  var id = req.params.id;
+  var updateQuery = new Query().update(id, function(data) {
+    res.json(data);
+  });
 });
 
 module.exports = router;
