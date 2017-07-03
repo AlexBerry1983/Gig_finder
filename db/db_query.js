@@ -39,7 +39,17 @@ Query.prototype = {
         onDataLoad(docs);
       })
     });
+  },
+
+  getById: function (id, onDataLoad) {
+    MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
+      if (err) return;
+      db.collection('listings').find({"_id": ObjectId(id)}).toArray(function(err, docs){
+        onDataLoad(docs);
+      })
+    });
   }
+
 }
 
 module.exports = Query;
