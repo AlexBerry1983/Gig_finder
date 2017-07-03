@@ -14,14 +14,13 @@ List.prototype = {
     gigs.all(function (gigs) {
       var gigs = JSON.parse(gigs);
       for (gig of gigs){
-        var li = document.createElement('li');
-        li.id = 'gigName'
-        li.innerText = gig.name;
-        li.addEventListener('click', function(){
+        var gigListLi = document.createElement('li');
+        gigListLi.innerText = gig.name;
+        gigListLi.addEventListener('click', function(event){
           var displayInfo = new DisplayInfo();
-          displayInfo.makeMapInfo();
+          displayInfo.makeMapInfo(event);
         })
-        ul.appendChild(li);
+        ul.appendChild(gigListLi);
       }
     });
     listDiv.appendChild(ul);
@@ -29,8 +28,5 @@ List.prototype = {
   }
 
 }
-
-
-
 
 module.exports = List;
