@@ -19,8 +19,9 @@ router.get('/api/listings/:id', function(req, res) {
 });
 
 router.delete('/api/listings/:id', function (req, res) {
-  var deleteQuery = new Query().delete(function(data) {
-  res.json(data);
+  var id = req.params.id
+  var deleteQuery = new Query().delete(id, function(data) {
+    res.json(data);
   });
 });
 
