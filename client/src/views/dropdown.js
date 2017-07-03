@@ -24,7 +24,6 @@ Dropdown.prototype = {
     li.innerText = gig.name;
     li.classList.add('dropdownItem');
     li.addEventListener('click', function () {
-      console.log(gig);
       this.clear();
     }.bind(this));
     return li;
@@ -32,15 +31,13 @@ Dropdown.prototype = {
 
   setupEventListeners: function () {
     this.inputHook.addEventListener('focus', function () {
-      console.log('FOCUSED');
       this.render(this.previousData);
     }.bind(this));
+
     this.inputHook.addEventListener('focusout', function (event) {
-      console.log(document.querySelectorAll('.dropdownItem:hover'));
       if (document.querySelectorAll('.dropdownItem:hover').length === 0){
         this.clear();
       };
-      console.log('BLUR', this.inputHook);
     }.bind(this));
   },
 
