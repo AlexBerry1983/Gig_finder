@@ -11,9 +11,7 @@ Button.prototype = {
     form.action = url;
     form.method = method;
     form.appendChild(button);
-
     
-
     return form;
   }
 }

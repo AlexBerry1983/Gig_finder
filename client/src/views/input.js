@@ -1,3 +1,4 @@
+var Dropdown = require('./dropdown.js');
 var request = require('../request.js');
 var Input = function () {
 
@@ -10,12 +11,10 @@ Input.prototype = {
     body.appendChild(search);
 
     search.addEventListener('input', function() {
-      console.log(this)
       var url = this.makeRequestString('GB', search.value, 'Edinburgh', '2017-07-04T14:00:00Z', '2017-07-10T14:00:00Z' );
       request.getRequest(url , function () {
-        console.log(url);
-        console.log(JSON.parse(this.responseText));
-        //console.dir(search.value)
+        var dropdown = new Dropdown();
+        dropdown.render(JSON.parse(this.responseText));
       })
     }.bind(this))
 
