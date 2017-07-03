@@ -10,8 +10,14 @@ Input.prototype = {
     body.appendChild(search);
 
     search.addEventListener('input', function() {
-      request.getRequest('https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu', function () {
+      var countryCode = 'GB';
+      var keyword = search.value;
+      var city = 'Edinburgh'
+      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=' + countryCode + '&keyword=' + keyword + '&city='+ city + '&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu';
+      request.getRequest(url , function () {
+        console.log(url);
         console.log(JSON.parse(this.responseText));
+        //console.dir(search.value)
       })
     })
   },
@@ -23,11 +29,6 @@ Input.prototype = {
 
 
 }
-
-
-
-// console.log input field value
-//then try to get it to connect to the api
 
 
 module.exports = Input;
