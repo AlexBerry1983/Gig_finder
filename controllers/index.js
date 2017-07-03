@@ -21,6 +21,10 @@ router.get('/api/listings/:id', function(req, res) {
   });
 });
 
+router.post('/api/listings', function(req, res) {
+  res.json("I am in the add (post) router function");
+});
+
 router.delete('/api/listings/:id', function (req, res) {
   var id = req.params.id;
   var deleteQuery = new Query().delete(id, function(data) {
