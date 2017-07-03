@@ -1,5 +1,6 @@
 var Dropdown = function (inputHook) {
   this.ul = document.createElement('ul');
+  this.ul.id = 'dropdown';
   inputHook.insertAdjacentElement("afterend", this.ul);
   console.log(inputHook.parentNode);
 }

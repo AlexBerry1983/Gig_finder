@@ -7,3 +7,8 @@
   height: 300px;
   width: 300px;
 }
+
+#dropdown {
+  background-color: antiquewhite;
+  position: fixed;
+}
