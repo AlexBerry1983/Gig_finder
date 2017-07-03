@@ -1,3 +1,4 @@
+var request = require('../request.js');
 var Input = function () {
 
 };
@@ -9,7 +10,9 @@ Input.prototype = {
     body.appendChild(search);
 
     search.addEventListener('input', function() {
-      console.log("woot console logging all day bro")
+      request.getRequest('https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu', function () {
+        console.log(JSON.parse(this.responseText));
+      })
     })
   },
 
