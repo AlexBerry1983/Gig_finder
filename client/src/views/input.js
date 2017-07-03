@@ -13,8 +13,8 @@ Input.prototype = {
     search.addEventListener('input', function() {
       var url = this.makeRequestString('GB', search.value, 'Edinburgh', '2017-07-04T14:00:00Z', '2017-07-10T14:00:00Z' );
       request.getRequest(url , function () {
-        var dropdown = new Dropdown();
-        dropdown.render(JSON.parse(this.responseText));
+        var data = JSON.parse(this.responseText);
+        var dropdown = new Dropdown().render(data);
       })
     }.bind(this))
 
