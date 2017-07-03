@@ -15,7 +15,14 @@ router.get('/', function (req, res) {
 });
 
 router.get('/api/listings/:id', function(req, res) {
-  res.json("Mike is gonna boss this shiiiiiiit");
+  var id = req.params.id;
+  var getAllQuery = new Query().getById(id, function(data) {
+  res.json(data);
+  });
+});
+
+router.post('/api/listings', function(req, res) {
+  res.json("I am in the add (post) router function");
 });
 
 router.delete('/api/listings/:id', function (req, res) {
