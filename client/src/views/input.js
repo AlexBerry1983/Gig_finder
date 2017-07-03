@@ -13,7 +13,9 @@ Input.prototype = {
       var countryCode = 'GB';
       var keyword = search.value;
       var city = 'Edinburgh'
-      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=' + countryCode + '&keyword=' + keyword + '&city='+ city + '&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu';
+      var today = '2017-07-04T14:00:00Z'
+      var weekLater = '2017-07-10T14:00:00Z'
+      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=' + countryCode + '&keyword=' + keyword + '&city='+ city + '&startDateTime='+ today + '&endDateTime='+ weekLater + '&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu';
       request.getRequest(url , function () {
         console.log(url);
         console.log(JSON.parse(this.responseText));
