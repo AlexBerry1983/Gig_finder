@@ -22,14 +22,17 @@ router.get('/api/listings/:id', function(req, res) {
 });
 
 router.delete('/api/listings/:id', function (req, res) {
-  var id = req.params.id
+  var id = req.params.id;
   var deleteQuery = new Query().delete(id, function(data) {
     res.json(data);
   });
 });
 
-router.put('/api/listings/:id', function(req, res) {
-  res.json("the thing has been updated - db side comes later")
+router.put('/api/listings/:id', function (req, res) {
+  var id = req.params.id;
+  var updateQuery = new Query().update(id, function(data) {
+    res.json(data);
+  });
 });
 
 module.exports = router;
