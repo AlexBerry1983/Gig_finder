@@ -19,12 +19,16 @@ router.get('/', function (req, res) {
 
 router.get('/api/listings/:id', function(req, res) {
   res.json("Mike is gonna boss this shiiiiiiit");
-})
+});
 
 router.delete('/api/listings/:id', function (req, res) {
   var deleteQuery = new Query().delete(function(data) {
   res.json(data);
   });
-})
+});
+
+router.put('/api/listings/:id', function(req, res) {
+  res.json("the thing has been updated - db side comes later")
+});
 
 module.exports = router;
