@@ -10,20 +10,22 @@ Input.prototype = {
     body.appendChild(search);
 
     search.addEventListener('input', function() {
-      var countryCode = 'GB';
-      var keyword = search.value;
-      var city = 'Edinburgh'
-      var today = '2017-07-04T14:00:00Z'
-      var weekLater = '2017-07-10T14:00:00Z'
-      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=' + countryCode + '&keyword=' + keyword + '&city='+ city + '&startDateTime='+ today + '&endDateTime='+ weekLater + '&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu';
+      console.log(this)
+      var url = this.makeRequestString('GB', search.value, 'Edinburgh', '2017-07-04T14:00:00Z', '2017-07-10T14:00:00Z' );
       request.getRequest(url , function () {
         console.log(url);
         console.log(JSON.parse(this.responseText));
         //console.dir(search.value)
       })
-    })
+    }.bind(this))
+
   },
 
+  makeRequestString: function(countryCode, keyword, city, startDate, endDate){
+    var url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode='
+    var newUrl = url + countryCode + '&keyword=' + keyword + '&city='+ city + '&startDateTime='+ startDate + '&endDateTime='+ endDate + '&apikey=XGGKz7PnerTTqIPRLLKeEaD3UAHd9ARu'
+    return newUrl;
+  }
 
 
 
