@@ -5,6 +5,8 @@ var path = require('path');
 var Query = require('../db/db_query.js');
 
 router.get('/api/listings', function (req, res) {
+  // May need brackets around new Query if getting
+  // intermediate error
   var getAllQuery = new Query().all(function(data) {
   res.json(data);
   });
@@ -17,12 +19,16 @@ router.get('/', function (req, res) {
 router.get('/api/listings/:id', function(req, res) {
   var id = req.params.id;
   var getAllQuery = new Query().getById(id, function(data) {
-  res.json(data);
+    res.json(data);
   });
 });
 
 router.post('/api/listings', function(req, res) {
-  res.json("I am in the add (post) router function");
+  // retrieve the new item from the request
+  var newGig = req.body;
+  var addQuery = new Query().add(newGig, function(data) {
+    res.json(data);
+  });
 });
 
 router.delete('/api/listings/:id', function (req, res) {

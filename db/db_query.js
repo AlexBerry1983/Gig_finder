@@ -25,10 +25,22 @@ Query.prototype = {
       if (err) return;
       // update item from database by id
       db.collection('listings').update({"_id": ObjectId(id)}, {$set:updateObject});
-      // now return list with item updated
+      // return list with item updated
       db.collection('listings').find().toArray(function(err, docs){
         onDataLoad(docs);
       });
+    });
+  },
+
+  add: function (gigToAdd, onDataLoad) {
+    MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
+      if (err) return;
+      // add the new item to the database
+      db.collection('listings').insert(gigToAdd);
+      // return the new list with the added item
+      db.collection('listings').find().toArray(function(err, docs){
+        onDataLoad(docs);
+      })
     });
   },
 
