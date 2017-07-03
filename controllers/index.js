@@ -5,12 +5,9 @@ var path = require('path');
 var Query = require('../db/db_query.js');
 
 router.get('/api/listings', function (req, res) {
-  MongoClient.connect('mongodb://localhost:27017/gigs', function(err, db){
-    if (err) return;
-    db.collection('listings').find().toArray(function(err, docs){
-      res.json(docs);
-    })
-  })
+  var getAllQuery = new Query().all(function(data) {
+  res.json(data);
+  });
 });
 
 router.get('/', function (req, res) {

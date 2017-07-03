@@ -7,16 +7,16 @@ var List = function () {
 
 List.prototype = {
   create: function () {
-    var ul = document.getElementById('user-choice');
+    var body = document.getElementsByTagName('body')[0]
+    var listDiv = document.createElement('div')
+    var ul = document.createElement('ul');
     var gigs = new Gigs();
-    console.log(this);
     gigs.all(function (gigs) {
       var gigs = JSON.parse(gigs);
       for (gig of gigs){
         var li = document.createElement('li');
         li.id = 'gigName'
         li.innerText = gig.name;
-        console.log(this);
         li.addEventListener('click', function(){
           var displayInfo = new DisplayInfo();
           displayInfo.makeMapInfo();
@@ -24,6 +24,8 @@ List.prototype = {
         ul.appendChild(li);
       }
     });
+    listDiv.appendChild(ul);
+    body.appendChild(listDiv);
   }
 
 }
