@@ -5,7 +5,6 @@ var Input = function () {
 
   var body = document.getElementsByTagName('body')[0];
   body.appendChild(this.search);
-
   this.dropdown = new Dropdown(this.search);
 };
 
