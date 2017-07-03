@@ -23,7 +23,7 @@ Input.prototype = {
 
 
 
-//add event listener - console log something - then the input field value
+// console.log input field value
 //then try to get it to connect to the api
 
 
