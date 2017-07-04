@@ -49,8 +49,7 @@ Dropdown.prototype = {
     var url = '/api/listings';
     var jsonString = JSON.stringify(gig);
     var modalBox = new ModalBox()
-    modalBox.create(gig)
-    // here request is (method, url, callback, payload)
+    modalBox.create(gig);
   },
 
   clear: function () {
