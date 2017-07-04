@@ -1,4 +1,5 @@
 var MapWrapper = require('../mapWrapper.js');
+var Button = require('./button.js')
 
 var DisplayInfo = function(){
   this.currentlyOpen;
@@ -32,6 +33,12 @@ DisplayInfo.prototype = {
     popUp.id = 'pop-up';
     event.target.appendChild(popUp);
     this.currentlyOpen = event.target;
+  },
+
+  createDeleteButton: function(id, event) {
+    var deleteButton = new Button();
+    var url = '/api/listings/' + id;
+    event.target.appendChild(deleteButton.create('DELETE', url));
   }
 
 }
