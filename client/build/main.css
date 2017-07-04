@@ -1,14 +1,59 @@
+
 #pop-up {
   height: 300px;
   width: 300px;
+  margin-right: 0px;
+  margin-left: 75%;
 }
 
 #dropdown {
-  background-color: antiquewhite;
+  background-color: white;
   position: fixed;
   z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0.5px solid grey;
 }
 
 #dropdown li:hover {
-  background-color: blue;
+  background-color: lightblue;
+}
+
+.dropdownItem {
+  padding-left: 0px:
+}
+
+li{
+  list-style: none;
+}
+
+body {
+  margin: 10px;
+}
+
+#list-div {
+  padding-right: 40px;
+}
+
+#list-div li {
+  border: 1px solid black;
+  font-size: 24px;
+  padding-left:15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#main-container {
+  margin: 5px;
+  padding-top: 10px;
+}
+
+#input-div {
+  padding-left: 40px;
+}
+
+#input-div input {
+  height: 30px;
+  width: 400px;
+  font-size: 18px;
 }

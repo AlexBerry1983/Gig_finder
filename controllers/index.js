@@ -5,8 +5,6 @@ var path = require('path');
 var Query = require('../db/db_query.js');
 
 router.get('/api/listings', function (req, res) {
-  // May need brackets around new Query if getting
-  // intermediate error
   var getAllQuery = new Query().all(function(data) {
   res.json(data);
   });

@@ -10,8 +10,11 @@ var List = function () {
 
 List.prototype = {
   create: function () {
-    var body = document.getElementsByTagName('body')[0]
+    // var body = document.getElementsByTagName('body')[0]
+    var containerDiv = document.getElementById('main-container');
+    console.log(containerDiv);
     var listDiv = document.createElement('div')
+    listDiv.id = 'list-div'
     var gigs = new Gigs();
     gigs.all(function (gigs) {
       var gigs = JSON.parse(gigs);
@@ -20,7 +23,8 @@ List.prototype = {
       }
     }.bind(this));
     listDiv.appendChild(this.ul);
-    body.appendChild(listDiv);
+    // body.appendChild(listDiv);
+    containerDiv.appendChild(listDiv);
   },
 
   createListItem: function(gig) {

@@ -20,10 +20,6 @@ UI.prototype ={
     searchInput.create();
   }
 
-  
-
-
-
 }
 
 
