@@ -14,7 +14,7 @@ ModalBox.prototype = {
 
     var body = document.getElementsByTagName('body')[0];
     var jsonString = JSON.stringify(gig);
-    var gigName = gig.name; 
+    var gigName = gig.name;
     var pTag = document.createElement('pTag');
     pTag.innerText = gigName;
     var url = '/api/listings';
@@ -22,7 +22,7 @@ ModalBox.prototype = {
     var confirmBox = document.createElement('div');
     confirmBox.id = 'confirm-box';
     this.currentBoxOption = confirmBox;
-
+    
     this.clear(confirmBox);
 
     var buttonSubmit = new Button();
@@ -42,8 +42,10 @@ ModalBox.prototype = {
   },
 
   clear: function (node) {
+    console.log(node.hasChildNodes());
      while (node.hasChildNodes()) {
        node.removeChild(node.children[0]);
+       console.log("nuked");
      }
      node.remove();
    },

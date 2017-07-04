@@ -5,6 +5,7 @@ var Dropdown = function (inputHook) {
   this.ul = document.createElement('ul');
   this.inputHook = inputHook;
   this.inputHook.insertAdjacentElement("afterend", this.ul);
+  this.modalBox = new ModalBox();
   this.previousData = {};
 
   this.setupEventListeners();
@@ -48,8 +49,7 @@ Dropdown.prototype = {
   confirmSaveGig: function (gig) {
     var url = '/api/listings';
     var jsonString = JSON.stringify(gig);
-    var modalBox = new ModalBox()
-    modalBox.create(gig);
+    this.modalBox.create(gig);
   },
 
   clear: function () {
