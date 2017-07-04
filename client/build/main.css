@@ -2,3 +2,13 @@
   height: 300px;
   width: 300px;
 }
+
+#dropdown {
+  background-color: antiquewhite;
+  position: fixed;
+  z-index: 1;
+}
+
+#dropdown li:hover {
+  background-color: blue;
+}

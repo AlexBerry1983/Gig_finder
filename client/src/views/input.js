@@ -1,23 +1,25 @@
+var Dropdown = require('./dropdown.js');
 var request = require('../request.js');
 var Input = function () {
+  this.search = document.createElement('input');
 
+  var body = document.getElementsByTagName('body')[0];
+  body.appendChild(this.search);
+  this.dropdown = new Dropdown(this.search);
 };
 
 Input.prototype = {
   create: function () {
-    var body = document.getElementsByTagName('body')[0];
-    var search = document.createElement('input');
-    body.appendChild(search);
+    var dropdown = this.dropdown;
 
-    search.addEventListener('input', function() {
-      console.log(this)
-      var url = this.makeRequestString('GB', search.value, 'Edinburgh', '2017-07-04T14:00:00Z', '2017-07-10T14:00:00Z' );
+    this.search.addEventListener('input', function() {
+      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', '2017-07-04T14:00:00Z', '2017-07-10T14:00:00Z' );
       request.getRequest(url , function () {
-        console.log(url);
-        console.log(JSON.parse(this.responseText));
-        //console.dir(search.value)
-      })
-    }.bind(this))
+
+        var data = JSON.parse(this.responseText);
+        dropdown.render(data);
+      });
+    }.bind(this));
 
   },
 
