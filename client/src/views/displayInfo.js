@@ -6,13 +6,12 @@ var DisplayInfo = function(){
 }
 
 DisplayInfo.prototype = {
-  makeMapInfo: function(event){
+  displayContentWindow: function(id, event){
     if (this.currentlyOpen == event.target) { return };
     if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
       this.nukePopUps();
     }
-    this.createAndAppendMapContainer(event);
-    this.createAndAppendContentContainer(event);
+    this.createMainContainer(id, event);
   },
 
   makeMap: function(el, center){
@@ -21,32 +20,50 @@ DisplayInfo.prototype = {
   },
 
   nukePopUps: function () {
-    var existingPopUp = document.querySelector('#pop-up');
+    var existingPopUp = document.querySelector('#main');
     if (existingPopUp){
       var li = existingPopUp.parentNode;
       li.removeChild(existingPopUp);
     }
   },
 
-  createAndAppendMapContainer: function(event){
+  createAndAppendMapContainer: function(container){
     var popUp = document.createElement('div');
     this.makeMap(popUp, {lat: 55.953251, lng:-3.188267})
     popUp.id = 'pop-up';
-    event.target.appendChild(popUp);
-    this.currentlyOpen = event.target;
+    return popUp;
   },
 
-  createAndAppendContentContainer: function (event) {
+  createAndAppendContentContainer: function (container) {
     var content = document.createElement('div');
     content.id = 'content';
     content.innerText = 'some content';
-    event.target.appendChild(content);
+    return content;
   },
 
-  createDeleteButton: function(id, event) {
-    var deleteButton = new Button();
+  createDeleteButton: function(id, container) {
+    var button = new Button();
     var url = '/api/listings/' + id;
-    event.target.appendChild(deleteButton.create('DELETE', url));
+    var deleteButton = button.create('DELETE', url);
+    deleteButton.id = 'button';
+    return deleteButton;
+  },
+
+  createMainContainer: function (id, event) {
+    var mainContainer = document.createElement('div');
+    mainContainer.id = 'main';
+
+    var map = this.createAndAppendMapContainer(mainContainer);
+    var content = this.createAndAppendContentContainer(mainContainer);
+    var dButton = this.createDeleteButton(id, mainContainer);
+
+    mainContainer.appendChild(map);
+    mainContainer.appendChild(content);
+    mainContainer.appendChild(dButton);
+
+    event.target.appendChild(mainContainer);
+
+    this.currentlyOpen = event.target;
   }
 
 }

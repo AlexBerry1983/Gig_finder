@@ -25,11 +25,10 @@ List.prototype = {
 
   createListItem: function(gig) {
     var gigListLi = document.createElement('li');
+    var id = gig._id;
     gigListLi.innerText = gig.name;
     gigListLi.addEventListener('click', function(event){
-      this.displayInfo.makeMapInfo(event);
-      this.displayInfo.createDeleteButton(gig._id, event);
-
+      this.displayInfo.displayContentWindow(id, event);
   }.bind(this));
 
     this.ul.appendChild(gigListLi);
