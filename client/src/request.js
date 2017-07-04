@@ -9,8 +9,9 @@ var request = {
   postRequest: function (method, url, callback, payload) {
     var request = new XMLHttpRequest();
     request.open(method, url);
+    request.setRequestHeader('Content-Type', 'application/json');
     request.onload = callback;
-    request.send();
+    request.send(payload);
   }
 }
 

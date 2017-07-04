@@ -26,8 +26,7 @@ Dropdown.prototype = {
     li.innerText = gig.name;
     li.classList.add('dropdownItem');
     li.addEventListener('click', function () {
-      console.log(gig);
-      this.saveGig();
+      this.saveGig(gig);
       this.clear();
     }.bind(this));
     return li;
@@ -45,8 +44,12 @@ Dropdown.prototype = {
     }.bind(this));
   },
 
-  saveGig: function () {
-    console.log("I'm in saveGig");
+  saveGig: function (gig) {
+    var url = '/api/listings';
+    var jsonString = JSON.stringify(gig);
+    // here request is (method, url, callback, payload)
+    request.postRequest("post", url, function() {
+      console.log('in post request')},  jsonString);
   },
 
   clear: function () {
