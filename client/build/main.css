@@ -3,7 +3,7 @@
   height: 300px;
   width: 300px;
   margin-right: 0px;
-  margin-left: 75%;
+  margin-left: calc(100% - 325px);;
 }
 
 #dropdown {
@@ -56,4 +56,13 @@ body {
   height: 30px;
   width: 400px;
   font-size: 18px;
+}
+
+#main {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+form {
+  order: -1;
 }
