@@ -26,10 +26,10 @@ DisplayInfo.prototype = {
     }
   },
 
-  createAndAppendContainer: function(){
-    var popUp = document.createElement('div');
-    this.makeMap(popUp, {lat: 55.953251, lng:-3.188267})
-    popUp.id = 'pop-up';
+  createAndAppendMapContainer: function(){
+    var mapContainer = document.createElement('div');
+    this.makeMap(mapContainer, {lat: 55.953251, lng:-3.188267})
+    mapContainer.id = 'map-container';
     event.target.appendChild(popUp);
     this.currentlyOpen = event.target;
   }
