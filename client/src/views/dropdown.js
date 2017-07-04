@@ -1,3 +1,5 @@
+var request = require('../request.js');
+
 var Dropdown = function (inputHook) {
   this.ul = document.createElement('ul');
   this.inputHook = inputHook;
@@ -25,6 +27,7 @@ Dropdown.prototype = {
     li.classList.add('dropdownItem');
     li.addEventListener('click', function () {
       console.log(gig);
+      this.saveGig();
       this.clear();
     }.bind(this));
     return li;
@@ -40,6 +43,10 @@ Dropdown.prototype = {
         this.clear();
       };
     }.bind(this));
+  },
+
+  saveGig: function () {
+    console.log("I'm in saveGig");
   },
 
   clear: function () {
