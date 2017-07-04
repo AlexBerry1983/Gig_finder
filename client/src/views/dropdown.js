@@ -18,8 +18,6 @@ Dropdown.prototype = {
     for (gig of objs._embedded.events) {
       var gigLi = this.createDropdownLi(gig);
       this.ul.appendChild(gigLi);
-      var inputDiv = getElementById('#input-div');
-      inputDiv.appendChild(this.ul);
     }
   },
 

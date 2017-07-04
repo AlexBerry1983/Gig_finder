@@ -7,7 +7,9 @@ var Input = function () {
   var inputDiv = document.createElement('div')
   inputDiv.id = 'input-div'
   inputDiv.appendChild(this.search)
-  body.appendChild(inputDiv);
+//  body.appendChild(inputDiv);
+  var containerDiv = document.getElementById('main-container');
+  containerDiv.appendChild(inputDiv);
   this.dropdown = new Dropdown(this.search);
 };
 
