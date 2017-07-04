@@ -7,7 +7,6 @@ var ModalBox = function(){
 
 ModalBox.prototype = {
   create: function(gig){
-
     if (this.currentBoxOption !== undefined) {
       this.clear(this.currentBoxOption);
     }
@@ -20,9 +19,9 @@ ModalBox.prototype = {
     var url = '/api/listings';
 
     var confirmBox = document.createElement('div');
-    confirmBox.id = 'confirm-box';
+    // confirmBox.id = 'confirm-box';
     this.currentBoxOption = confirmBox;
-    
+
     this.clear(confirmBox);
 
     var buttonSubmit = new Button();
@@ -32,10 +31,10 @@ ModalBox.prototype = {
 
     var buttonCancel = document.createElement('button');
     buttonCancel.innerText = 'Cancel';
+    buttonCancel.addEventListener('click', function(){
+      this.clear(confirmBox)
+    }.bind(this))
 
-    // confirmBox.appendChild(pTag);
-    // confirmBox.appendChild(confirmButton);
-    // confirmBox.appendChild(buttonCancel);
     this.append(confirmBox, pTag, confirmButton, buttonCancel);
     body.appendChild(confirmBox);
 
