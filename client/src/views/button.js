@@ -1,25 +1,29 @@
 var request = require('../request.js');
 
 var Button = function () {
+  this.form = document.createElement('form');
+  this.button = document.createElement('input');
 
 };
 
 Button.prototype = {
-  create: function (method, url, callback) {
-    var form = document.createElement('form');
-    var button = document.createElement('input');
-    button.type = 'submit';
+  create: function (method, url, callback, payload) {
+    this.button.type = 'submit';
 
-    form.addEventListener('submit', function (event) {
+    this.form.addEventListener('submit', function (event) {
       event.preventDefault();
-      request.postRequest(method, url, callback);
+      request.postRequest(method, url, callback, payload);
     });
 
-    form.action = url;
-    form.method = method;
-    form.appendChild(button);
+    this.form.action = url;
+    this.form.method = method;
+    this.form.appendChild(this.button);
 
-    return form;
+    return this.form;
+  },
+
+  text: function (name) {
+    this.button.value = name;
   }
 }
 
