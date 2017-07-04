@@ -4,6 +4,7 @@ var DisplayInfo = require('./displayInfo.js');
 var Button = require('./button.js');
 
 var List = function () {
+  this.displayInfo = new DisplayInfo();
   this.ul = document.createElement('ul');
 };
 
@@ -30,23 +31,15 @@ List.prototype = {
     var gigListLi = document.createElement('li');
     gigListLi.innerText = gig.name;
     gigListLi.addEventListener('click', function(event){
+      this.displayInfo.makeMapInfo(event);
+      this.displayInfo.createDeleteButton(gig._id, event);
 
-      var displayInfo = new DisplayInfo();
-      displayInfo.makeMapInfo(event);
-
-      var button = this.createDeleteButton(gig._id);
-      gigListLi.appendChild(button);
-
-    }.bind(this));
+  }.bind(this));
 
     this.ul.appendChild(gigListLi);
-  },
-
-  createDeleteButton: function(id) {
-    var deleteButton = new Button();
-    var url = '/api/listings/' + id;
-    return deleteButton.create('DELETE', url);
   }
+
+
 
 
 
