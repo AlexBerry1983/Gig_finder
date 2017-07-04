@@ -19,7 +19,6 @@ List.prototype = {
         gigListLi.innerText = gig.name;
 
         gigListLi.addEventListener('click', function(event){
-
           this.displayInfo.makeMapInfo(event);
 
         }.bind(this))

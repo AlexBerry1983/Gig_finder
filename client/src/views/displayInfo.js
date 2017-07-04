@@ -10,7 +10,7 @@ DisplayInfo.prototype = {
     if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
       this.nukePopUps();
     }
-    this.createAndAppendContainer(event)
+    this.createAndAppendContainer(event);
   },
 
   makeMap: function(el, center){
