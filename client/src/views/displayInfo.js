@@ -52,6 +52,9 @@ DisplayInfo.prototype = {
   createMainContainer: function (id, event) {
     var mainContainer = document.createElement('div');
     mainContainer.id = 'main';
+    mainContainer.addEventListener('click', function (event) {
+      event.stopPropagation();
+    })
 
     var map = this.createAndAppendMapContainer(mainContainer);
     var content = this.createAndAppendContentContainer(mainContainer);
