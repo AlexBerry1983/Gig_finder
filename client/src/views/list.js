@@ -20,7 +20,6 @@ List.prototype = {
 
         gigListLi.addEventListener('click', function(event){
 
-
           this.displayInfo.makeMapInfo(event);
 
         }.bind(this))

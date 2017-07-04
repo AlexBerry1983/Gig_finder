@@ -11,11 +11,7 @@ DisplayInfo.prototype = {
 
     if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
 
-      var existingPopUp = document.querySelector('#pop-up');
-      if (existingPopUp){
-        var li = existingPopUp.parentNode;
-        li.removeChild(existingPopUp);
-      }
+      this.nukePopUps();
     }
 
     var popUp = document.createElement('div');
@@ -32,6 +28,14 @@ DisplayInfo.prototype = {
   makeMap: function(el, center){
     var mainMap = new MapWrapper(el, center, 10);
     mainMap.addMarker(center);
+  },
+
+  nukePopUps: function () {
+    var existingPopUp = document.querySelector('#pop-up');
+    if (existingPopUp){
+      var li = existingPopUp.parentNode;
+      li.removeChild(existingPopUp);
+    }
   }
 }
 
