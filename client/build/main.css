@@ -13,10 +13,17 @@
   padding-left: 10px;
   padding-right: 10px;
   border: 0.5px solid grey;
+  width: 385px;
+  font-size: 18px;
+  padding-top: 0;
 }
 
 #dropdown li:hover {
   background-color: lightblue;
+}
+
+#dropdown:empty{
+  display: none;
 }
 
 .dropdownItem {
