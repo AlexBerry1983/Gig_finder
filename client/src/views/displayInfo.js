@@ -10,7 +10,8 @@ DisplayInfo.prototype = {
     if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
       this.nukePopUps();
     }
-    this.createAndAppendContainer(event);
+    this.createAndAppendMapContainer(event);
+    this.createAndAppendContentContainer(event);
   },
 
   makeMap: function(el, center){
@@ -26,12 +27,19 @@ DisplayInfo.prototype = {
     }
   },
 
-  createAndAppendMapContainer: function(){
-    var mapContainer = document.createElement('div');
-    this.makeMap(mapContainer, {lat: 55.953251, lng:-3.188267})
-    mapContainer.id = 'map-container';
+  createAndAppendMapContainer: function(event){
+    var popUp = document.createElement('div');
+    this.makeMap(popUp, {lat: 55.953251, lng:-3.188267})
+    popUp.id = 'pop-up';
     event.target.appendChild(popUp);
     this.currentlyOpen = event.target;
+  },
+
+  createAndAppendContentContainer: function (event) {
+    var content = document.createElement('div');
+    content.id = 'content';
+    content.innerText = 'some content';
+    event.target.appendChild(content);
   }
 
 }

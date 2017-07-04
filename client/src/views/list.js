@@ -29,7 +29,6 @@ List.prototype = {
     gigListLi.addEventListener('click', function(event){
 
       this.displayInfo.makeMapInfo(event);
-      this.displayInfo.makeContent();
 
       var button = this.createDeleteButton(gig._id);
       gigListLi.appendChild(button);
