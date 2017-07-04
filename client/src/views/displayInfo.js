@@ -7,8 +7,11 @@ var DisplayInfo = function(){
 
 DisplayInfo.prototype = {
   displayContentWindow: function(id, event){
-    if (this.currentlyOpen == event.target) { return };
-    if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
+    if (this.currentlyOpen == event.target) {
+      this.nukePopUps();
+      this.currentlyOpen = undefined;
+      return
+    } else if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
       this.nukePopUps();
     }
     this.createMainContainer(id, event);
