@@ -11,6 +11,7 @@ List.prototype = {
   create: function () {
     var body = document.getElementsByTagName('body')[0]
     var listDiv = document.createElement('div')
+    listDiv.id = 'list-div'
     var gigs = new Gigs();
     gigs.all(function (gigs) {
       var gigs = JSON.parse(gigs);
