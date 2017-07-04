@@ -10,52 +10,50 @@ ModalBox.prototype = {
     if (this.currentBoxOption !== undefined) {
       this.clear(this.currentBoxOption);
     }
-
     var body = document.getElementsByTagName('body')[0];
     var jsonString = JSON.stringify(gig);
     var gigName = gig.name;
     var pTag = document.createElement('pTag');
     pTag.innerText = gigName;
     var url = '/api/listings';
-
     var confirmBox = document.createElement('div');
-    // confirmBox.id = 'confirm-box';
     this.currentBoxOption = confirmBox;
 
-    this.clear(confirmBox);
+    confirmBox.appendChild(pTag);
+    this.createConfirmButton(url, jsonString, confirmBox)
+    this.createCancelButton(confirmBox)
+    body.appendChild(confirmBox);
+  },
 
+  clear: function (node) {
+    while (node.hasChildNodes()) {
+      node.removeChild(node.children[0]);
+    }
+    node.remove();
+   },
+
+  append: function() {
+    for (var i =  1; i <= arguments.length - 1; i++) {
+      arguments[0].appendChild(arguments[i]);
+    }
+  },
+
+  createConfirmButton: function(url, jsonString, confirmBox){
     var buttonSubmit = new Button();
     var confirmButton = buttonSubmit.create("post", url, function(){
-      console.log("in post from submit button");
-    }, jsonString);
+      this.clear(confirmBox)
+    }.bind(this), jsonString);
+    confirmBox.appendChild(confirmButton);
+  },
 
+  createCancelButton: function(confirmBox){
     var buttonCancel = document.createElement('button');
     buttonCancel.innerText = 'Cancel';
     buttonCancel.addEventListener('click', function(){
       this.clear(confirmBox)
     }.bind(this))
-
-    this.append(confirmBox, pTag, confirmButton, buttonCancel);
-    body.appendChild(confirmBox);
-
-  },
-
-  clear: function (node) {
-    console.log(node.hasChildNodes());
-     while (node.hasChildNodes()) {
-       node.removeChild(node.children[0]);
-       console.log("nuked");
-     }
-     node.remove();
-   },
-
-   append: function() {
-    for (var i =  1; i <= arguments.length - 1; i++) {
-      arguments[0].appendChild(arguments[i]);
-    }
-   }
-
-
+    confirmBox.appendChild(buttonCancel)
+  }
 
 }
 

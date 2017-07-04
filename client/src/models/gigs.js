@@ -7,7 +7,7 @@ Gigs.prototype = {
   all: function(callback){
     request.getRequest('http://localhost:3000/api/listings', function(){
     console.log(this);
-    console.log(this.responseText);
+    // console.log(this.responseText);
     callback(this.responseText);
     });
   }
