@@ -24,6 +24,7 @@ Dropdown.prototype = {
     li.innerText = gig.name;
     li.classList.add('dropdownItem');
     li.addEventListener('click', function () {
+      console.log(gig);
       this.clear();
     }.bind(this));
     return li;
