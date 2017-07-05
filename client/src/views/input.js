@@ -18,7 +18,7 @@ Input.prototype = {
     var dropdown = this.dropdown;
 
     this.search.addEventListener('input', function() {
-      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', '2017-07-04T14:00:00Z', '2017-07-23T14:00:00Z' );
+      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', '2017-07-15T14:00:00Z', '2017-08-30T14:00:00Z' );
       request.getRequest(url , function () {
 
         var data = JSON.parse(this.responseText);
