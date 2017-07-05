@@ -12,6 +12,7 @@ var Input = function () {
   this.searchLocation.placeholder = " Location";
 
   this.searchDate = document.createElement('input');
+  this.searchDate.type = 'date';
   this.searchDate.id = 'date-search';
   this.searchDate.placeholder = " Date";
 
@@ -32,8 +33,17 @@ Input.prototype = {
     var dropdown = this.dropdown;
 
     this.search.addEventListener('input', function() {
-      var now = moment().format('YYYY-MM-DDTHH:mm:ss') + 'Z';
-      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', now, '2017-08-30T14:00:00Z' );
+      var now = moment();
+      var nowStr = now.format('YYYY-MM-DDTHH:mm:ss') + 'Z';
+
+      var then = now.clone().add(100, 'y');
+      if (this.searchDate.value) {
+        then = moment(this.searchDate.value);
+        then.hour(24);
+      }
+
+      var thenStr = then.format('YYYY-MM-DDTHH:mm:ss') + 'Z';
+      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', nowStr, thenStr );
       request.getRequest(url , function () {
 
         var data = JSON.parse(this.responseText);
