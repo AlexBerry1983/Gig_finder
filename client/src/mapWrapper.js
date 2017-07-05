@@ -5,6 +5,7 @@ var MapWrapper = function(container, coords, zoom){
   });
   setTimeout(function(){
     google.maps.event.trigger(this.googleMap, 'resize');
+    this.googleMap.setCenter(coords);
   }.bind(this), 0)
   container.children[0].addEventListener('click', function (event) {
     event.stopPropagation();
