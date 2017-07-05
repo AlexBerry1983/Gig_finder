@@ -18,7 +18,8 @@ DisplayInfo.prototype = {
   },
 
   makeMap: function(el, center){
-    var mainMap = new MapWrapper(el, center, 10);
+    console.log(center);
+    var mainMap = new MapWrapper(el, center, 15);
     mainMap.addMarker(center);
   },
 
@@ -33,7 +34,7 @@ DisplayInfo.prototype = {
   createAndAppendMapContainer: function(gig, container){
     var popUp = document.createElement('div');
     //console.log();
-    this.makeMap(popUp, {lat: parseInt(gig._embedded.venues["0"].location.latitude), lng: parseInt(gig._embedded.venues["0"].location.longitude)})
+    this.makeMap(popUp, {lat: parseFloat(gig._embedded.venues["0"].location.latitude), lng: parseFloat(gig._embedded.venues["0"].location.longitude)})
     popUp.id = 'pop-up';
     return popUp;
   },
