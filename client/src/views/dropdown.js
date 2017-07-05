@@ -18,6 +18,10 @@ Dropdown.prototype = {
     this.previousData = objs;
     this.clear();
 
+    if (objs._embedded == undefined) {
+      return;
+    }
+
     for (gig of objs._embedded.events) {
       var gigLi = this.createDropdownLi(gig);
       this.ul.appendChild(gigLi);

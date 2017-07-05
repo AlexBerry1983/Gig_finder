@@ -12,17 +12,17 @@ Content.prototype = {
 
     var liTime = document.createElement('li');
     liTime.id = 'time';
-    liTime.textContent = gig.dates.start.localTime;
+    liTime.textContent = gig.dates.start.localTime || 'Not Found';
     ul.appendChild(liTime);
 
     var liDate = document.createElement('li');
     liDate.id = 'date';
-    liDate.textContent = gig.dates.start.localDate;
+    liDate.textContent = gig.dates.start.localDate || 'Not Found';
     ul.appendChild(liDate);
 
     var liPlace = document.createElement('li');
     liPlace.id = 'city';
-    liPlace.textContent = gig._embedded.venues[0].name;
+    liPlace.textContent = gig._embedded.venues[0].name || 'Not Found';
     ul.appendChild(liPlace);
 
     content.appendChild(ul);
