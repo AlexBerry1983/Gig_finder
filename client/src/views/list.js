@@ -32,7 +32,7 @@ List.prototype = {
     var id = gig._id;
     gigListLi.innerText = gig.name;
     gigListLi.addEventListener('click', function(event){
-      this.displayInfo.displayContentWindow(id, event);
+      this.displayInfo.displayContentWindow(gig, event);
   }.bind(this));
 
     this.ul.appendChild(gigListLi);

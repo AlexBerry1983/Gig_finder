@@ -6,7 +6,7 @@ var DisplayInfo = function(){
 }
 
 DisplayInfo.prototype = {
-  displayContentWindow: function(id, event){
+  displayContentWindow: function(gig, event){
     if (this.currentlyOpen == event.target) {
       this.nukePopUps();
       this.currentlyOpen = undefined;
@@ -14,7 +14,7 @@ DisplayInfo.prototype = {
     } else if (this.currentlyOpen !== event.target && this.currentlyOpen !== undefined ){
       this.nukePopUps();
     }
-    this.createMainContainer(id, event);
+    this.createMainContainer(gig, event);
   },
 
   makeMap: function(el, center){
@@ -37,23 +37,53 @@ DisplayInfo.prototype = {
     return popUp;
   },
 
-  createAndAppendContentContainer: function (container) {
+  createAndAppendContentContainer: function (gig, container) {
     var content = document.createElement('div');
     content.id = 'content';
-    content.innerText = 'some content';
+
+    console.log(gig);
+    var ul = document.createElement('ul');
+    ul.id = 'content-list';
+
+    var liTime = document.createElement('li');
+    liTime.id = 'time';
+    liTime.textContent = gig.dates.start.localTime;
+    ul.appendChild(liTime);
+
+    var liDate = document.createElement('li');
+    liDate.id = 'date';
+    liDate.textContent = gig.dates.start.localDate;
+    ul.appendChild(liDate);
+
+    var liPlace = document.createElement('li');
+    liPlace.id = 'city';
+    liPlace.textContent = gig._embedded.venues[0].name;
+    ul.appendChild(liPlace);
+
+    var liPrice = document.createElement('li');
+    liPrice.id = 'city';
+    liPrice.textContent = gig.priceRanges["0"].min;
+    liPrice.textContent += "-";
+    liPrice.textContent += gig.priceRanges["0"].max;
+    liPrice.textContent += gig.priceRanges["0"].currency;
+
+    ul.appendChild(liPrice);
+
+    content.appendChild(ul);
+
     return content;
   },
 
-  createDeleteButton: function(id, container) {
+  createDeleteButton: function(gig, container) {
     var button = new Button();
     button.text('Delete');
-    var url = '/api/listings/' + id;
+    var url = '/api/listings/' + gig._id;
     var deleteButton = button.create('DELETE', url);
     deleteButton.id = 'button';
     return deleteButton;
   },
 
-  createMainContainer: function (id, event) {
+  createMainContainer: function (gig, event) {
     var mainContainer = document.createElement('div');
     mainContainer.id = 'main';
     mainContainer.addEventListener('click', function (event) {
@@ -61,8 +91,8 @@ DisplayInfo.prototype = {
     })
 
     var map = this.createAndAppendMapContainer(mainContainer);
-    var content = this.createAndAppendContentContainer(mainContainer);
-    var dButton = this.createDeleteButton(id, mainContainer);
+    var content = this.createAndAppendContentContainer(gig, mainContainer);
+    var dButton = this.createDeleteButton(gig, mainContainer);
 
     mainContainer.appendChild(map);
     mainContainer.appendChild(content);
