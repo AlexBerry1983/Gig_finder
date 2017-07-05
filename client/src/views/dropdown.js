@@ -2,9 +2,11 @@ var request = require('../request.js');
 var ModalBox = require('./modalbox.js')
 
 var Dropdown = function (inputHook) {
+  var lastInput = document.getElementById('date-search')
   this.ul = document.createElement('ul');
+  this.ul.id = 'dropdown';
   this.inputHook = inputHook;
-  this.inputHook.insertAdjacentElement("afterend", this.ul);
+  lastInput.insertAdjacentElement("afterend", this.ul);
   this.modalBox = new ModalBox();
   this.previousData = {};
   this.list;
@@ -14,7 +16,6 @@ var Dropdown = function (inputHook) {
 Dropdown.prototype = {
   render: function (objs) {
     this.previousData = objs;
-    this.ul.id = 'dropdown';
     this.clear();
 
     for (gig of objs._embedded.events) {
