@@ -41,7 +41,7 @@ DisplayInfo.prototype = {
   },
 
   createAndAppendContentContainer: function (gig, container) {
-    return new Content().create();
+    return new Content().create(gig);
   },
 
   createDeleteButton: function(gig, container) {

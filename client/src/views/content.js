@@ -3,7 +3,7 @@ var Content = function () {
 }
 
 Content.prototype = {
-  create: function () {
+  create: function (gig) {
     var content = document.createElement('div');
     content.id = 'content';
 
