@@ -10,7 +10,6 @@ var List = function () {
 
 List.prototype = {
   create: function () {
-    // var body = document.getElementsByTagName('body')[0]
     var containerDiv = document.getElementById('main-container');
     console.log(containerDiv);
     var listDiv = document.createElement('div')
@@ -23,7 +22,6 @@ List.prototype = {
       }
     }.bind(this));
     listDiv.appendChild(this.ul);
-    // body.appendChild(listDiv);
     containerDiv.appendChild(listDiv);
   },
 
