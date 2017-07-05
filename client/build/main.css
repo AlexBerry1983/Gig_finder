@@ -3,15 +3,10 @@
   height: 300px;
   width: 300px;
   margin-right: 0px;
-  margin-left: calc(100% - 325px);
 }
 
-/* #input-div ul {
-
-} */
 
 #dropdown {
-
   background-color: white;
   position: absolute;;
   z-index: 1;
@@ -59,8 +54,11 @@ body {
 }
 
 #main-container {
-  margin: 5px;
+  margin: 40px;
+  border: 40px;
   padding-top: 10px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 #input-div {
@@ -89,11 +87,14 @@ body {
 
 #main {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 form {
-  order: -1;
+  order: 99;
+  padding-top: 35px;
+  padding-left: 35px;
 }
 
 #Confirm-box {
@@ -117,14 +118,45 @@ form {
 
 #Confirm-box * {
   display: inline-block;
+
 }
 
 .buttons {
   height: 30px;
   background-color: white;
-  border: solid grey 1px;
+  border: solid black 1px;
   margin-left: 5px;
+  border-radius: 2.5px;
 }
 
+#content-list {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
 
+li #time {
+ border: none;
+ padding-top: 10px;
+ padding-right: 20px;
+}
+
+li #date {
+ border: none;
+ padding-right: 45px;
+}
+
+li #city{
+  border: none;
+}
+
+li #image {
+  border: none;
+  height: 300px;
+  width: 300px;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
 }
