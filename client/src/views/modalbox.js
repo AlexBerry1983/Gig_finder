@@ -46,7 +46,7 @@ ModalBox.prototype = {
       this.clear(confirmBox)
       this.onModalClick();
     }.bind(this), jsonString);
-    buttonSubmit.text("add");
+    buttonSubmit.text("Add");
     return confirmButton;
   },
 
