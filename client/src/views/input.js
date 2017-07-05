@@ -1,17 +1,19 @@
 var Dropdown = require('./dropdown.js');
 var request = require('../request.js');
+var moment = require('moment');
+
 var Input = function () {
   this.search = document.createElement('input');
   this.search.id = 'main-search'
   this.search.placeholder=" Type an Artist or Keyword";
 
   this.searchLocation = document.createElement('input');
-  this.searchLocation.id = 'location-search'
-  this.searchLocation.placeholder = " Location"
+  this.searchLocation.id = 'location-search';
+  this.searchLocation.placeholder = " Location";
 
   this.searchDate = document.createElement('input');
-  this.searchDate.id = 'date-search'
-  this.searchDate.placeholder = " Date"
+  this.searchDate.id = 'date-search';
+  this.searchDate.placeholder = " Date";
 
   var body = document.getElementsByTagName('body')[0];
   var inputDiv = document.createElement('div')
@@ -30,7 +32,8 @@ Input.prototype = {
     var dropdown = this.dropdown;
 
     this.search.addEventListener('input', function() {
-      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', '2017-07-15T14:00:00Z', '2017-08-30T14:00:00Z' );
+      var now = moment().format('YYYY-MM-DDTHH:mm:ss') + 'Z';
+      var url = this.makeRequestString('GB', this.search.value, 'Edinburgh', 'Music', now, '2017-08-30T14:00:00Z' );
       request.getRequest(url , function () {
 
         var data = JSON.parse(this.responseText);
