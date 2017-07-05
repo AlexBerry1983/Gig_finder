@@ -19,9 +19,9 @@ ModalBox.prototype = {
     var confirmBox = document.createElement('div');
     this.currentBoxOption = confirmBox;
 
-    confirmBox.appendChild(pTag);
-    this.createConfirmButton(url, jsonString, confirmBox)
-    this.createCancelButton(confirmBox)
+    var confirmButton = this.createConfirmButton(url, jsonString, confirmBox)
+    var cancelButton = this.createCancelButton(confirmBox)
+    this.append(confirmBox, pTag, confirmButton, cancelButton)
     body.appendChild(confirmBox);
   },
 
@@ -43,7 +43,7 @@ ModalBox.prototype = {
     var confirmButton = buttonSubmit.create("post", url, function(){
       this.clear(confirmBox)
     }.bind(this), jsonString);
-    confirmBox.appendChild(confirmButton);
+    return confirmButton;
   },
 
   createCancelButton: function(confirmBox){
@@ -52,7 +52,7 @@ ModalBox.prototype = {
     buttonCancel.addEventListener('click', function(){
       this.clear(confirmBox)
     }.bind(this))
-    confirmBox.appendChild(buttonCancel)
+    return buttonCancel;
   }
 
 }
