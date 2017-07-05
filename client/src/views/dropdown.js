@@ -16,7 +16,8 @@ Dropdown.prototype = {
     this.previousData = objs;
     this.ul.id = 'dropdown';
     this.clear();
-    if (objs == {}) {
+
+    if (objs._embedded == undefined) {
       return;
     }
 
