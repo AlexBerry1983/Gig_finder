@@ -3,21 +3,24 @@
   height: 300px;
   width: 300px;
   margin-right: 0px;
-  margin-left: calc(100% - 325px);;
+  margin-left: calc(100% - 325px);
 }
 
+/* #input-div ul {
+
+} */
+
 #dropdown {
+
   background-color: white;
-  position: absolute;
+  position: absolute;;
   z-index: 1;
-  padding-left: 10px;
+  padding-left: 40px;
   padding-right: 10px;
   border: 1px solid grey;
-  border-top: 5px;
   width: 385px;
   font-size: 20px;
-  padding-top: 0;
-  height:auto;
+  margin-left: 38px;
 }
 
 #dropdown li:hover {
@@ -61,13 +64,27 @@ body {
 }
 
 #input-div {
+  display: inline;
   padding-left: 40px;
 }
 
-#input-div input {
+#main-search {
   height: 30px;
   width: 400px;
   font-size: 18px;
+  padding-right: 20px;
+}
+
+#location-search {
+  font-size: 18px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#date-search {
+  font-size: 18px;
+  height: 30px;
 }
 
 #main {
