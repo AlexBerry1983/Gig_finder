@@ -7,7 +7,7 @@ var Dropdown = function (inputHook) {
   this.inputHook.insertAdjacentElement("afterend", this.ul);
   this.modalBox = new ModalBox();
   this.previousData = {};
-
+  this.list;
   this.setupEventListeners();
 }
 
@@ -49,7 +49,9 @@ Dropdown.prototype = {
   confirmSaveGig: function (gig) {
     var url = '/api/listings';
     var jsonString = JSON.stringify(gig);
-    this.modalBox.create(gig);
+    this.modalBox.create(gig, function () {
+      this.list.reRender();
+    }.bind(this));
   },
 
   clear: function () {

@@ -5,19 +5,19 @@ var Gigs = require('../models/gigs.js');
 var MapWrapper = require('../mapWrapper.js');
 
 var UI = function(){
+  this.itemList = new List();
+  this.searchInput = new Input();
 
 }
 
 UI.prototype ={
 
   makeListItem: function(){
-    var itemList = new List();
-    itemList.create();
+    this.itemList.create();
   },
 
   makeSearchInput: function() {
-    var searchInput = new Input();
-    searchInput.create();
+    this.searchInput.create(this.itemList);
   }
 
 }

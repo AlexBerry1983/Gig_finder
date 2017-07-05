@@ -3,10 +3,12 @@ var Button = require('./button.js');
 
 var ModalBox = function(){
   this.currentBoxOption;
+  this.onModalClick;
 }
 
 ModalBox.prototype = {
-  create: function(gig){
+  create: function(gig, onModalClick){
+    this.onModalClick = onModalClick;
     if (this.currentBoxOption !== undefined) {
       this.clear(this.currentBoxOption);
     }
@@ -42,6 +44,7 @@ ModalBox.prototype = {
     var buttonSubmit = new Button();
     var confirmButton = buttonSubmit.create("post", url, function(){
       this.clear(confirmBox)
+      this.onModalClick();
     }.bind(this), jsonString);
     buttonSubmit.text("add");
     return confirmButton;

@@ -36,11 +36,12 @@ List.prototype = {
   }.bind(this));
 
     this.ul.appendChild(gigListLi);
+  },
+
+  reRender: function () {
+    this.ul.innerHTML = '';
+    this.create()
   }
-
-
-
-
 
 }
 

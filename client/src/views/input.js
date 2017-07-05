@@ -7,14 +7,14 @@ var Input = function () {
   var inputDiv = document.createElement('div')
   inputDiv.id = 'input-div'
   inputDiv.appendChild(this.search)
-//  body.appendChild(inputDiv);
   var containerDiv = document.getElementById('main-container');
   containerDiv.appendChild(inputDiv);
   this.dropdown = new Dropdown(this.search);
 };
 
 Input.prototype = {
-  create: function () {
+  create: function (list) {
+    this.dropdown.list = list;
     var dropdown = this.dropdown;
 
     this.search.addEventListener('input', function() {
