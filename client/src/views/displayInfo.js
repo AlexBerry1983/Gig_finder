@@ -4,10 +4,12 @@ var Content = require('./content.js');
 
 var DisplayInfo = function(){
   this.currentlyOpen;
+  this.list;
 }
 
 DisplayInfo.prototype = {
-  displayContentWindow: function(gig, event){
+  displayContentWindow: function(gig, event, list){
+    this.list = list;
     if (this.currentlyOpen == event.target) {
       this.nukePopUps();
       this.currentlyOpen = undefined;
@@ -50,7 +52,9 @@ DisplayInfo.prototype = {
     var button = new Button();
     button.text('Delete');
     var url = '/api/listings/' + gig._id;
-    var deleteButton = button.create('DELETE', url);
+    var deleteButton = button.create('DELETE', url, function(){
+      this.list.reRender()
+    }.bind(this));
     deleteButton.id = 'button';
     return deleteButton;
   },
