@@ -16,6 +16,9 @@ Dropdown.prototype = {
     this.previousData = objs;
     this.ul.id = 'dropdown';
     this.clear();
+    if (objs == {}) {
+      return;
+    }
 
     for (gig of objs._embedded.events) {
       var gigLi = this.createDropdownLi(gig);
