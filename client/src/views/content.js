@@ -17,7 +17,8 @@ Content.prototype = {
 
     var liTime = document.createElement('li');
     liTime.id = 'time';
-    liTime.textContent = gig.dates.start.localTime || 'Not Found';
+    var time = gig.dates.start.localTime.split("").slice(0, -3).join("");
+    liTime.textContent = time || 'Not Found';
     ul.appendChild(liTime);
 
     var liDate = document.createElement('li');
