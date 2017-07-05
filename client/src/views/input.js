@@ -2,11 +2,23 @@ var Dropdown = require('./dropdown.js');
 var request = require('../request.js');
 var Input = function () {
   this.search = document.createElement('input');
+  this.search.id = 'main-search'
+  this.search.placeholder=" Type an Artist or Keyword";
+
+  this.searchLocation = document.createElement('input');
+  this.searchLocation.id = 'location-search'
+  this.searchLocation.placeholder = " Location"
+
+  this.searchDate = document.createElement('input');
+  this.searchDate.id = 'date-search'
+  this.searchDate.placeholder = " Date"
 
   var body = document.getElementsByTagName('body')[0];
   var inputDiv = document.createElement('div')
   inputDiv.id = 'input-div'
-  inputDiv.appendChild(this.search)
+  inputDiv.appendChild(this.search);
+  inputDiv.appendChild(this.searchLocation);
+  inputDiv.appendChild(this.searchDate);
   var containerDiv = document.getElementById('main-container');
   containerDiv.appendChild(inputDiv);
   this.dropdown = new Dropdown(this.search);
