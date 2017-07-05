@@ -4,7 +4,12 @@ var Input = function () {
   this.search = document.createElement('input');
 
   var body = document.getElementsByTagName('body')[0];
-  body.appendChild(this.search);
+  var inputDiv = document.createElement('div')
+  inputDiv.id = 'input-div'
+  inputDiv.appendChild(this.search)
+//  body.appendChild(inputDiv);
+  var containerDiv = document.getElementById('main-container');
+  containerDiv.appendChild(inputDiv);
   this.dropdown = new Dropdown(this.search);
 };
 
