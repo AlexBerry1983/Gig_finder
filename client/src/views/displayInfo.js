@@ -60,15 +60,6 @@ DisplayInfo.prototype = {
     liPlace.textContent = gig._embedded.venues[0].name;
     ul.appendChild(liPlace);
 
-    var liPrice = document.createElement('li');
-    liPrice.id = 'city';
-    liPrice.textContent = gig.priceRanges["0"].min;
-    liPrice.textContent += "-";
-    liPrice.textContent += gig.priceRanges["0"].max;
-    liPrice.textContent += gig.priceRanges["0"].currency;
-
-    ul.appendChild(liPrice);
-
     content.appendChild(ul);
 
     return content;
