@@ -43,6 +43,7 @@ ModalBox.prototype = {
     var confirmButton = buttonSubmit.create("post", url, function(){
       this.clear(confirmBox)
     }.bind(this), jsonString);
+    buttonSubmit.text("add");
     return confirmButton;
   },
 
