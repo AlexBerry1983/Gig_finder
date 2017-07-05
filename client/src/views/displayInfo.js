@@ -55,7 +55,7 @@ DisplayInfo.prototype = {
     var deleteButton = button.create('DELETE', url, function(){
       this.list.reRender()
     }.bind(this));
-    deleteButton.id = 'button';
+    button.button.className = 'buttons';
     return deleteButton;
   },
 
@@ -69,6 +69,7 @@ DisplayInfo.prototype = {
     var map = this.createAndAppendMapContainer(gig, mainContainer);
     var content = this.createAndAppendContentContainer(gig, mainContainer);
     var dButton = this.createDeleteButton(gig, mainContainer);
+
 
     mainContainer.appendChild(map);
     mainContainer.appendChild(content);
