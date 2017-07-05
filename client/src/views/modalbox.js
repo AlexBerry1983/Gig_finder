@@ -15,11 +15,12 @@ ModalBox.prototype = {
     var body = document.getElementsByTagName('body')[0];
     var jsonString = JSON.stringify(gig);
     var gigName = gig.name;
-    var pTag = document.createElement('pTag');
+    var pTag = document.createElement('p');
     pTag.innerText = gigName;
     var url = '/api/listings';
     var confirmBox = document.createElement('div');
     this.currentBoxOption = confirmBox;
+    confirmBox.id = 'Confirm-box';
 
     var confirmButton = this.createConfirmButton(url, jsonString, confirmBox)
     var cancelButton = this.createCancelButton(confirmBox)
@@ -47,12 +48,14 @@ ModalBox.prototype = {
       this.onModalClick();
     }.bind(this), jsonString);
     buttonSubmit.text("Add");
+    buttonSubmit.button.className = 'buttons';
     return confirmButton;
   },
 
   createCancelButton: function(confirmBox){
     var buttonCancel = document.createElement('button');
     buttonCancel.innerText = 'Cancel';
+    buttonCancel.className = 'buttons';
     buttonCancel.addEventListener('click', function(){
       this.clear(confirmBox)
     }.bind(this))
