@@ -30,9 +30,10 @@ DisplayInfo.prototype = {
     }
   },
 
-  createAndAppendMapContainer: function(container){
+  createAndAppendMapContainer: function(gig, container){
     var popUp = document.createElement('div');
-    this.makeMap(popUp, {lat: 55.953251, lng:-3.188267})
+    //console.log();
+    this.makeMap(popUp, {lat: parseInt(gig._embedded.venues["0"].location.latitude), lng: parseInt(gig._embedded.venues["0"].location.longitude)})
     popUp.id = 'pop-up';
     return popUp;
   },
@@ -81,7 +82,7 @@ DisplayInfo.prototype = {
       event.stopPropagation();
     })
 
-    var map = this.createAndAppendMapContainer(mainContainer);
+    var map = this.createAndAppendMapContainer(gig, mainContainer);
     var content = this.createAndAppendContentContainer(gig, mainContainer);
     var dButton = this.createDeleteButton(gig, mainContainer);
 
