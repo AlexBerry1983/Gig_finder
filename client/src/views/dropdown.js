@@ -61,6 +61,10 @@ Dropdown.prototype = {
 
   clear: function () {
     this.ul.innerHTML = "";
+  },
+
+  clearPrevious: function () {
+    this.previousData = {};
   }
 }
 

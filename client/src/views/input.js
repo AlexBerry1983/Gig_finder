@@ -32,6 +32,10 @@ Input.prototype = {
     this.dropdown.list = list;
     var dropdown = this.dropdown;
 
+    this.searchDate.addEventListener('change', function () {
+      this.dropdown.clearPrevious();
+   }.bind(this));
+
     this.search.addEventListener('input', function() {
       var now = moment();
       var nowStr = now.format('YYYY-MM-DDTHH:mm:ss') + 'Z';
