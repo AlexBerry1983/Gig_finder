@@ -1,9 +1,11 @@
 var request = require('../request.js');
+var ModalBox = require('./modalbox.js')
 
 var Dropdown = function (inputHook) {
   this.ul = document.createElement('ul');
   this.inputHook = inputHook;
   this.inputHook.insertAdjacentElement("afterend", this.ul);
+  this.modalBox = new ModalBox();
   this.previousData = {};
 
   this.setupEventListeners();
@@ -26,7 +28,7 @@ Dropdown.prototype = {
     li.innerText = gig.name;
     li.classList.add('dropdownItem');
     li.addEventListener('click', function () {
-      this.saveGig(gig);
+      this.confirmSaveGig(gig);
       this.clear();
     }.bind(this));
     return li;
@@ -44,12 +46,10 @@ Dropdown.prototype = {
     }.bind(this));
   },
 
-  saveGig: function (gig) {
+  confirmSaveGig: function (gig) {
     var url = '/api/listings';
     var jsonString = JSON.stringify(gig);
-    // here request is (method, url, callback, payload)
-    request.postRequest("post", url, function() {
-      console.log('in post request')},  jsonString);
+    this.modalBox.create(gig);
   },
 
   clear: function () {
