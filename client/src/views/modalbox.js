@@ -15,8 +15,11 @@ ModalBox.prototype = {
     var body = document.getElementsByTagName('body')[0];
     var jsonString = JSON.stringify(gig);
     var gigName = gig.name;
-    var pTag = document.createElement('p');
-    pTag.innerText = gigName;
+    var startDate= gig.dates.start.localDate;
+    var pTag1 = document.createElement('p');
+    var pTag2 = document.createElement('p');
+    pTag1.innerText = gigName;
+    pTag2.innerText = startDate;
     var url = '/api/listings';
     var confirmBox = document.createElement('div');
     this.currentBoxOption = confirmBox;
@@ -24,7 +27,7 @@ ModalBox.prototype = {
 
     var confirmButton = this.createConfirmButton(url, jsonString, confirmBox)
     var cancelButton = this.createCancelButton(confirmBox)
-    this.append(confirmBox, pTag, confirmButton, cancelButton)
+    this.append(confirmBox, pTag1, pTag2, confirmButton, cancelButton)
     body.appendChild(confirmBox);
   },
 

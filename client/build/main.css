@@ -16,6 +16,7 @@
   width: 385px;
   font-size: 20px;
   margin-left: 38px;
+  color: black;
 }
 
 #dropdown li:hover {
@@ -92,18 +93,19 @@ body {
   justify-content: flex-end;
 }
 
-form {
+li form {
   order: 99;
   padding-top: 35px;
   padding-left: 35px;
 }
 
 #Confirm-box {
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 2.5px;
   width: 300px;
   height: 150px;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 25px;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
@@ -111,6 +113,8 @@ form {
   left: calc(50% - 150px);
   background-color: white;
   justify-content: center;
+  color: black;
+  margin:10px;
 }
 
 #Confirm-box p {
